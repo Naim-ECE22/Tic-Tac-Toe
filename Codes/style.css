@@ -1,0 +1,317 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(150, 150, 150);
+    overflow: hidden;
+}
+
+.heading {  
+    font-size: 100px;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    border: none;
+    outline: none;
+    color: transparent;
+}
+
+.heading::before {
+    content: 'Tic Tac Toe Game';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      red, rgb(2, 145, 2), blue, rgb(181, 121, 11), rgb(255, 0, 0, .6)
+    );
+    filter: contrast(2);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    z-index: 1;
+    animation: rgbmotion 7s linear infinite;
+}
+
+@keyframes rgbmotion {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: -100% 0%;
+    }
+}
+
+.relcon {
+    display: grid;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 40px;
+    height: 600px;
+    width: 800px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+}
+
+.bdr {
+    border: 1.5px solid black;
+    border-radius: 18px;
+    box-shadow: 0 0 8px rgb(0, 0, 0, .7);
+    font-size: 130px;
+    background-color: #ffffc7;
+    font-weight: 550;
+}
+
+.end {
+    display: flex;
+    justify-content: center;
+    margin-top: 27px;
+}
+
+/*The Main Glow*/
+#reset {
+    height: 45px;
+    width: 100px;
+    border-radius: 9px;
+    color: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+    z-index: 0;
+    font-size: 17px;
+    position: relative;
+}
+
+#reset::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(23, 14, 14);
+    left: 0;
+    bottom: 0;
+    border-radius: 7px;
+}
+
+#reset::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(
+        45deg,
+        #ff0000, #ff7300,
+        #fff000, #30ff30,
+        #00ffd5, #002bff,
+        #ff00c8, #ff0000
+    );
+    top: -2px;
+    bottom: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glow 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    opacity: 1;
+}
+
+@keyframes glow {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 900% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+#reset:hover::before {
+    opacity: 1;
+  }
+  
+#reset:active:after {
+    background: transparent;
+}
+  
+#reset:active {
+    color: #000000;
+    font-weight: bold;
+}
+
+.rd {
+    color: red;
+}
+
+.bl {
+    color: blue;
+}
+
+/* .new-btn {
+    height: 45px;
+    width: 100px;
+    font-size: 15px;
+    border-radius: 9px;
+    border: none;
+    font-size: 17px;
+} */
+
+.nw {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.win {
+    font-size: 30px;
+    font-weight: 550;
+    position: relative;
+    z-index: 0;
+    border: none;
+    outline: none;
+    /* color: transparent; */
+}
+
+/* .win::before {
+    content: 'Winner is';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      90deg,
+      red, rgb(2, 145, 2), blue, rgb(181, 121, 11), rgb(255, 0, 0, .6)
+    );
+    filter: contrast(2);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    z-index: 1;
+    animation: rgbmotion2 7s linear infinite;
+}
+
+@keyframes rgbmotion2 {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: -100% 0%;
+    }
+} */
+
+.hide {
+    visibility: hidden;
+}
+
+.countx {
+    padding-right: 30px;
+    font-size: 30px;
+    padding-top: 8px;
+    font-weight: 550;
+    color: red;
+}
+
+.counto {
+    padding-left: 30px;
+    font-size: 30px;
+    padding-top: 8px;
+    font-weight: 550;   
+    color: blue;
+}
+
+.draw {
+    color: rgba(123, 255, 34, 0.988);
+}
+
+/* .fade {
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+
+.fade:hover {
+    opacity: .3;
+} */
+
+.new-btn {
+    height: 45px;
+    width: 100px;
+    font-size: 15px;
+    border-radius: 9px;
+    color: rgb(255, 255, 255);
+    border: none;
+    outline: none;
+    z-index: 0;
+    font-size: 17px;
+    position: relative;
+}
+
+.new-btn::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(23, 14, 14);
+    left: 0;
+    bottom: 0;
+    border-radius: 7px;
+}
+
+.new-btn::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(
+        to right,
+        #ff0000, #ff7300,
+        #fff000, #30ff30,
+        #00ffd5, #002bff,
+        #ff00c8, #ff0000
+    );
+    top: -2px;
+    bottom: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glow 10s linear infinite;
+    transition: opacity .3s ease-in-out;
+    opacity: 1;
+}
+
+@keyframes glow {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.new-btn:hover::before {
+    opacity: 1;
+  }
+  
+.new-btn:active:after {
+    background: transparent;
+}
+  
+.new-btn:active {
+    color: #000000;
+    font-weight: bold;
+}
